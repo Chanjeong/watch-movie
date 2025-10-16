@@ -47,8 +47,11 @@ export default function MovieList({ movies }: MovieListProps) {
                 {movie.title}
               </h3>
               <button
-                onClick={e => handleFavoriteClick(movie.id, e)}
-                className="ml-2 p-1 hover:bg-gray-100 rounded-full transition-colors">
+                onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleFavoriteClick(movie.id, e);
+                }}>
                 {isFavorite(movie.id) ? (
                   <span className="text-red-500 text-xl">❤️</span>
                 ) : (

@@ -65,23 +65,7 @@ export default function MoviePagination({
             />
           </PaginationItem>
 
-          {/* 첫 페이지 */}
-          {pageNumbers[0] > 1 && (
-            <>
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => handlePageChange(1)}
-                  className="cursor-pointer">
-                  1
-                </PaginationLink>
-              </PaginationItem>
-              {pageNumbers[0] > 2 && (
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              )}
-            </>
-          )}
+          {/* 첫 페이지 표시 제거 - 의미없는 큰 점프 제거 */}
 
           {/* 페이지 번호들 */}
           {pageNumbers.map(page => (
@@ -95,23 +79,7 @@ export default function MoviePagination({
             </PaginationItem>
           ))}
 
-          {/* 마지막 페이지 */}
-          {pageNumbers[pageNumbers.length - 1] < totalPages && (
-            <>
-              {pageNumbers[pageNumbers.length - 1] < totalPages - 1 && (
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              )}
-              <PaginationItem>
-                <PaginationLink
-                  onClick={() => handlePageChange(totalPages)}
-                  className="cursor-pointer">
-                  {totalPages}
-                </PaginationLink>
-              </PaginationItem>
-            </>
-          )}
+          {/* 마지막 페이지 표시 제거 - 너무 큰 페이지 번호는 의미없음 */}
 
           {/* 다음 버튼 */}
           <PaginationItem>

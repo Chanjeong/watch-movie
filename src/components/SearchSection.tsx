@@ -1,16 +1,38 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import MovieList from '@/components/MovieList';
 import { useSearchMovies } from '@/hooks/useMovies';
+import MoviePagination from './Pagination';
 
 export default function SearchSection() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // URL에서 페이지 파라미터 읽기
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const page = pageParam ? parseInt(pageParam, 10) : 1;
+    if (page >= 1 && page !== currentPage) {
+      setCurrentPage(page);
+    }
+  }, [searchParams, currentPage]);
 
   // React Query로 검색 데이터 로드
-  const { data, isLoading, error } = useSearchMovies(query, 1);
+  const { data, isLoading, error } = useSearchMovies(query, currentPage);
   const movies = data?.results || [];
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // URL에 페이지 파라미터 추가
+    const params = new URLSearchParams(searchParams);
+    params.set('page', page.toString());
+    router.push(`/search?${params.toString()}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // 로딩 상태
   if (isLoading) {
@@ -43,7 +65,29 @@ export default function SearchSection() {
 
   // 영화 목록
   if (movies.length > 0) {
-    return <MovieList movies={movies} />;
+    return (
+      <div>
+        {/* 검색 결과 정보 */}
+        <div className="mb-6">
+          <div className="text-sm text-gray-600">
+            &ldquo;{query}&rdquo; 검색 결과:{' '}
+            {data?.total_results.toLocaleString()}개
+          </div>
+        </div>
+
+        {/* 영화 목록 */}
+        <MovieList movies={movies} />
+
+        {/* 페이지네이션 */}
+        {data && data.total_pages > 1 && (
+          <MoviePagination
+            currentPage={currentPage}
+            totalPages={data.total_pages}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
+    );
   }
 
   // 검색어가 없을 때

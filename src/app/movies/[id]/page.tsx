@@ -1,13 +1,14 @@
 import MovieDetail from '@/components/MovieDetail';
 
 interface MoviePageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function MoviePage({ params }: MoviePageProps) {
-  const movieId = parseInt(params.id);
+export default async function MoviePage({ params }: MoviePageProps) {
+  const resolvedParams = await params;
+  const movieId = parseInt(resolvedParams.id);
 
   return (
     <div className="min-h-screen p-8 bg-gray-50">
@@ -15,4 +16,3 @@ export default function MoviePage({ params }: MoviePageProps) {
     </div>
   );
 }
-

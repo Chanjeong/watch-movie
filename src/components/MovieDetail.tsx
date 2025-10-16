@@ -88,12 +88,18 @@ export default function MovieDetail({ movieId }: MovieDetailProps) {
             </div>
             <Button
               onClick={handleFavoriteClick}
-              variant={isFavorite(movie.id) ? 'default' : 'outline'}
+              variant={isFavorite(movie.id) ? 'outline' : 'default'}
               size="lg"
-              className="flex items-center gap-2">
+              className={`flex items-center gap-2 ${
+                isFavorite(movie.id)
+                  ? 'bg-red-500 text-white border-red-500 hover:bg-red-600'
+                  : 'bg-gray-200 text-gray-900 border-gray-300 hover:bg-gray-300'
+              }`}>
               <Heart
                 className={`h-5 w-5 ${
-                  isFavorite(movie.id) ? 'fill-current' : ''
+                  isFavorite(movie.id)
+                    ? 'fill-current text-white'
+                    : 'text-gray-900'
                 }`}
               />
               {isFavorite(movie.id) ? '즐겨찾기됨' : '즐겨찾기'}

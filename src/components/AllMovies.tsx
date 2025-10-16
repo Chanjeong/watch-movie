@@ -1,15 +1,32 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import MovieList from '@/components/MovieList';
 import { usePopularMovies } from '@/hooks/useMovies';
 import MoviePagination from './Pagination';
 
 export default function AllMovies() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
+
+  // URL에서 페이지 파라미터 읽기
+  useEffect(() => {
+    const pageParam = searchParams.get('page');
+    const page = pageParam ? parseInt(pageParam, 10) : 1;
+    if (page >= 1 && page !== currentPage) {
+      setCurrentPage(page);
+    }
+  }, [searchParams, currentPage]);
+
   const { data, isLoading, error } = usePopularMovies(currentPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    // URL에 페이지 파라미터 추가
+    const params = new URLSearchParams(searchParams);
+    params.set('page', page.toString());
+    router.push(`/movies?${params.toString()}`);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

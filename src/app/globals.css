@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,61 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 텍스트 색상 강제 설정 */
+.text-gray-900 {
+  color: #111827 !important;
+}
+
+.text-gray-800 {
+  color: #1f2937 !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* 제목과 헤딩 강제 검정색 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111827 !important;
+}
+
+/* 링크 색상 - 기본 검정색 */
+a {
+  color: #111827 !important;
+}
+
+a:hover {
+  color: #374151 !important;
+}
+
+/* 페이지네이션 버튼 색상 수정 */
+[data-slot='pagination-link'][data-active='true'] {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+  border-color: #111827 !important;
+}
+
+[data-slot='pagination-link'][data-active='true']:hover {
+  background-color: #374151 !important;
+  color: #ffffff !important;
+}
+
+[data-slot='pagination-link']:not([data-active='true']) {
+  color: #111827 !important;
+}
+
+[data-slot='pagination-link']:not([data-active='true']):hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
 }
