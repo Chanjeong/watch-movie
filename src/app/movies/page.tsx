@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import AllMovies from '@/components/AllMovies';
+import MovieDetailSkeleton from '@/components/MovieDetailSkeleton';
 
 export default function MoviesPage() {
   return (
@@ -8,8 +10,10 @@ export default function MoviesPage() {
         <h1 className="text-4xl font-bold mb-2">모든 영화</h1>
       </div>
 
-      {/* 모든 영화 컴포넌트 - 페이지네이션 포함 */}
-      <AllMovies />
+      {/* 모든 영화 컴포넌트 - Suspense로 감싸기 */}
+      <Suspense fallback={<MovieDetailSkeleton />}>
+        <AllMovies />
+      </Suspense>
     </div>
   );
 }
