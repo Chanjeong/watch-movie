@@ -37,7 +37,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           configPath: './lighthouse.config.js'
-          uploadArtifacts: true
+          uploadArtifacts: false
           temporaryPublicStorage: true
 
       - name: Comment PR with Lighthouse results
@@ -73,4 +73,3 @@ jobs:
                 body: commentBody
               });
             }
-
