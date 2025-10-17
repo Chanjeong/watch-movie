@@ -1,0 +1,26 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 영화 필름 배경 -->
+  <rect width="32" height="32" rx="4" fill="#1f2937"/>
+  
+  <!-- 영화 필름 구멍들 -->
+  <rect x="4" y="6" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="4" y="12" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="4" y="18" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="4" y="24" width="2" height="2" rx="1" fill="#6b7280"/>
+  
+  <rect x="26" y="6" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="26" y="12" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="26" y="18" width="2" height="2" rx="1" fill="#6b7280"/>
+  <rect x="26" y="24" width="2" height="2" rx="1" fill="#6b7280"/>
+  
+  <!-- 영화 스크린 -->
+  <rect x="8" y="8" width="16" height="12" rx="2" fill="#374151"/>
+  
+  <!-- 영화 제목 (간단한 텍스트) -->
+  <rect x="10" y="12" width="12" height="2" rx="1" fill="#ef4444"/>
+  <rect x="10" y="15" width="8" height="1" rx="0.5" fill="#6b7280"/>
+  <rect x="10" y="17" width="10" height="1" rx="0.5" fill="#6b7280"/>
+  
+  <!-- 재생 버튼 (삼각형) -->
+  <path d="M14 10 L14 18 L20 14 Z" fill="#ef4444"/>
+</svg>

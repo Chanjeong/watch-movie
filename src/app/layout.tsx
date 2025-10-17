@@ -16,7 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: '뭐볼래',
-  description: 'TMDB API를 활용한 영화 검색 및 상세 정보 제공 서비스'
+  description: 'TMDB API를 활용한 영화 검색 및 상세 정보 제공 서비스',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg'
+  }
 };
 
 export default function RootLayout({

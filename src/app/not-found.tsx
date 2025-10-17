@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function NotFound() {
   return (
@@ -12,11 +13,9 @@ export default function NotFound() {
           <p className="text-gray-500 mb-8">
             요청하신 페이지가 존재하지 않습니다.
           </p>
-          <Link
-            href="/"
-            className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
-            🏠 홈으로 돌아가기
-          </Link>
+          <Button asChild size="lg">
+            <Link href="/">🏠 홈으로 돌아가기</Link>
+          </Button>
         </div>
       </div>
     </div>

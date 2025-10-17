@@ -11,17 +11,5 @@ const axiosInstance = axios.create({
   }
 });
 
-// 🔍 디버깅: 요청 전에 URL 확인
-axiosInstance.interceptors.request.use(
-  config => {
-    console.log('🚀 실제 요청 URL:', config.baseURL! + config.url);
-    console.log('🔑 API 키:', config.params?.api_key);
-    return config;
-  },
-  error => {
-    return Promise.reject(error);
-  }
-);
-
 // 설정된 axios 인스턴스를 export (다른 파일에서 사용할 수 있게)
 export default axiosInstance;
