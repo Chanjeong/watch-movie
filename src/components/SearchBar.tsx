@@ -19,18 +19,18 @@ export default function SearchBar() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl ">
+    <form onSubmit={handleSubmit} className="w-full max-w-2xl">
       <div className="relative">
         <input
           type="text"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
           placeholder="영화 제목을 검색하세요..."
-          className="w-full px-4 py-3 pl-12 pr-4 text-lg text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 sm:px-4 py-2 sm:py-3 pl-10 sm:pl-12 pr-20 sm:pr-24 text-sm sm:text-lg text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           <svg
-            className="h-6 w-6 text-gray-400"
+            className="h-4 w-4 sm:h-6 sm:w-6 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24">
@@ -44,7 +44,7 @@ export default function SearchBar() {
         </div>
         <button
           type="submit"
-          className="absolute inset-y-0 right-0 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          className="absolute inset-y-0 right-0 px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 rounded-r-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
           검색
         </button>
       </div>
